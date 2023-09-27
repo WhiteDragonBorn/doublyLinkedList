@@ -127,17 +127,13 @@ void deleteBeforeNode(const DList& curNode, DList& head) {
 }
 
 void deleteCurrentNode(DList* head_ref, DList delNode) {
-  if (*head_ref == nullptr || delNode == nullptr)
-    return;
+  if (*head_ref == nullptr || delNode == nullptr) return;
 
-  if (*head_ref == delNode)
-    *head_ref = delNode->next;
+  if (*head_ref == delNode) *head_ref = delNode->next;
 
-  if (delNode->next != nullptr)
-    delNode->next->prev = delNode->prev;
+  if (delNode->next != nullptr) delNode->next->prev = delNode->prev;
 
-  if (delNode->prev != nullptr)
-    delNode->prev->next = delNode->next;
+  if (delNode->prev != nullptr) delNode->prev->next = delNode->next;
 
   delete delNode;
 }
@@ -150,14 +146,11 @@ void Clear(DList& head, DList& tail) {
 
 int main() {
   DList head, tail;
-  DList head_c, tail_c;
   init(head, tail);
   addToHead(head, tail, 4);
   addToHead(head, tail, 3);
   addToHead(head, tail, 2);
   addToHead(head, tail, 1);
-  head_c = head;
-  tail_c = tail;
   addAfterNode(tail, tail, 5);
   printDList(head, tail);
   deleteAfterNode(tail, tail);
@@ -168,9 +161,6 @@ int main() {
   printDList(head, tail);
   deleteBeforeNode(head->next, head);
   printDList(head, tail);
-  // cout << head->data << " " << tail->data << endl;
   deleteCurrentNode(&head, head);
-  // cout << tail->data << endl;
-  //cout << head << " " << tail;
-   printDList(head, tail);
+  printDList(head, tail);
 }
